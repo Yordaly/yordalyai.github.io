@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Fondo Degradado Suave</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #ff5733, #33ff57);
+            transition: background 3s ease;
+            position: relative;
+        }
+
+        .rect-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Espacio entre las filas de rectángulos */
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rect {
+            width: 200px;
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            position: relative;
+        }
+
+        #ai-button {
+            background: white; /* Color de fondo blanco */
+            color: #333; /* Color del texto */
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px; /* Espacio entre el botón y los rectángulos */
+        }
+
+        #copyright {
+            color: #fff;
+            font-size: 12px;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="ai-button">INTELIGENCIA ARTIFICIAL</div>
+
+    <div class="rect-container">
+        <div class="row">
+            <div class="rect"></div>
+        </div>
+        <div class="row">
+            <div class="rect"></div>
+        </div>
+        <div class="row">
+            <div class="rect"></div>
+        </div>
+        <!-- Repite esta estructura para más rectángulos -->
+    </div>
+
+    <script>
+        // Cambiar el fondo degradado automáticamente cada 5 segundos con transición suave
+        const bodyElement = document.body;
+        const colors = ['#ff5733', '#33ff57', '#5733ff', '#ff33a1'];
+        let backgroundIndex = 0;
+
+        function changeBackground() {
+            const newColor1 = colors[backgroundIndex];
+            const newColor2 = colors[(backgroundIndex + 1) % colors.length];
+            bodyElement.style.background = `linear-gradient(45deg, ${newColor1}, ${newColor2})`;
+            backgroundIndex = (backgroundIndex + 1) % colors.length;
+        }
+
+        setInterval(changeBackground, 5000); // Cambia el fondo cada 5 segundos
+    </script>
+
+    <div id="copyright">© 2023 YordalyAI. Todos los derechos reservados.</div>
+</body>
+</html>
